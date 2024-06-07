@@ -1,0 +1,16 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Robolo:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary: #fe2c55;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Robolo', sans-serif;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed; /* Hiện thị văn bản một cách nhanh nhất */
+}
