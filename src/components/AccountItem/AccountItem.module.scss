@@ -1,0 +1,39 @@
+.wrapper {
+    position: relative;
+    padding: 9px 16px;
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 32px;
+    height: 40px;
+    margin-right: 12px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.account {
+    flex: 1;
+}
+
+.username {
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 500;
+}
+
+.name {
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(22, 24, 35, 0.5);
+}
