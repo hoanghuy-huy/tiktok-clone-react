@@ -9,6 +9,8 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { SearchIcon } from '~/components/icon';
 import { useDebounce } from '~/hooks';
+import * as searchServices from '~/apiServices/searchServices';
+
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -19,27 +21,25 @@ function Search() {
 
     const refSearchInput = useRef();
 
-    const valueDebounce = useDebounce(searchValue, 500)
+    const valueDebounce = useDebounce(searchValue, 500);
 
     useEffect(() => {
-        if (!valueDebounce.trim()){
-            setSearchResult([])
+        if (!valueDebounce.trim()) {
+            setSearchResult([]);
             return;
         }
         // encode kí tự đặc biệt khi người dùng nhập vào+
+        const fetchApi = async () => {
+            setShowLoadingIcon(true);
 
-        setShowLoadingIcon(true);
+            const result = await searchServices.search(valueDebounce);
 
-        fetch(
-            `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-               valueDebounce,
-            )}&type=less`,
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setShowLoadingIcon(false);
-            });
+            setSearchResult(result);
+
+            setShowLoadingIcon(false)
+        };
+
+        fetchApi();
     }, [valueDebounce]);
 
     const handleOnChangeSearchInput = (e) => {
@@ -91,7 +91,9 @@ function Search() {
                     </button>
                 )}
                 <button className={cx('load')}>
-                    {showLoadingIcon && <ImSpinner8 className={cx('loading')} />} 
+                    {showLoadingIcon && (
+                        <ImSpinner8 className={cx('loading')} />
+                    )}
                 </button>
                 <button className={cx('search-btn')}>
                     <SearchIcon />
