@@ -1,4 +1,3 @@
-
 import classNames from 'classnames/bind';
 import { BsPlusLg } from 'react-icons/bs';
 import { IoMdMore } from 'react-icons/io';
@@ -16,12 +15,13 @@ import { IoIosLogOut } from 'react-icons/io';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-
+import routesConfig from '~/config/routes'
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
 import { InboxIcon, MessageIcon } from '~/components/icon';
 import Image from '~/components/Image';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
@@ -84,7 +84,6 @@ const USER_MENU = [
     },
 ];
 function Header() {
-
     const handleOnChangeMenuItem = (MenuItems) => {
         // console.log(MenuItems)
     };
@@ -95,7 +94,9 @@ function Header() {
             <div className={cx('inner')}>
                 {/* Logo */}
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="logo tiktok" />
+                    <Link to={routesConfig.home}>
+                        <img src={images.logo} alt="logo tiktok" />
+                    </Link>
                 </div>
                 {/* Input search */}
                 <Search />
@@ -128,7 +129,7 @@ function Header() {
                                 <button className={cx('more-btn')}>
                                     <Image
                                         className={cx('avata-user')}
-                                         src="https://p16.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/46b933a325f61c69cdc6e329df40f5d4.jpeg?lk3s=a5d48078&nonce=51229&refresh_token=c15f3099938b341ecaf9ae24e458a3b5&x-expires=1718247600&x-signature=iSno92D3viQXvgZYHxNmWlIxbMA%3D&shp=a5d48078&shcp=81f88b70"
+                                        src="https://p16.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/46b933a325f61c69cdc6e329df40f5d4.jpeg?lk3s=a5d48078&nonce=51229&refresh_token=c15f3099938b341ecaf9ae24e458a3b5&x-expires=1718247600&x-signature=iSno92D3viQXvgZYHxNmWlIxbMA%3D&shp=a5d48078&shcp=81f88b70"
                                         alt="avata user"
                                         fallBack="https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/46b933a325f61c69cdc6e329df40f5d4.jpeg?lk3s=a5d48078&nonce=51229&refresh_token=c15f3099938b341ecaf9ae24e458a3b5&x-expires=1718247600&x-signature=iSno92D3viQXvgZYHxNmWlIxbMA%3D&shp=a5d48078&shcp=81f88b70"
                                     />

@@ -82,6 +82,7 @@
     border-bottom-right-radius: var(--search-border-radious);
     font-size: 1.8rem;
     color: rgba(22, 24, 35, 0.34);
+    padding-top: 5px;
     &:hover {
         cursor: pointer;
         background-color: rgba(22, 24, 35, 0.1);
